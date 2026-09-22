@@ -1,0 +1,239 @@
+{
+  "/works/cardfit": {
+    "version": 1,
+    "title": "CardFit",
+    "description": "Artemis is a premium Framer template for designers and creatives. Showcase your projects, process, and personality with a clean, customizable portfolio that stands out on any device.",
+    "keywords": "",
+    "h1": [
+      "CardFit"
+    ],
+    "h2": [
+      "Let's connect further?"
+    ],
+    "h3": [],
+    "h4": [],
+    "h5": [
+      "Client: CardFit (Visit)Industry: FinTech, Personal FinanceTimeline: 0 → 1 Product Development (2026)My Role: Founder, Product Manager & Product Designer",
+      "Design Solution",
+      "← Back to All Works",
+      "Noor Azaan →"
+    ],
+    "h6": [],
+    "p": [
+      "Pragya's",
+      "portfolio",
+      "Credit card discovery platform that uses live card data and a personalized ranking engine to help users find the right card",
+      "Web",
+      "Choosing a credit card is still surprisingly difficult. Most comparison sites rely on long lists, generic filters, and rankings that don't reflect individual needs.",
+      "I built CardFit to make the process more intuitive by combining a searchable credit card directory with a ranking engine that adapts to different spending habits and preferences. I led the product end-to-end, defining the MVP, designing the user experience, building a web scraping pipeline to keep card data up to date, and developing the logic behind personalized card recommendations.",
+      "Email",
+      "pragyasilwal@gmail.com",
+      "LinkedIn",
+      "linkedin.com/psilwal",
+      "Website",
+      "pragyasilwal.com",
+      "2026",
+      "Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    ],
+    "codeblock": [],
+    "url": "/works/cardfit"
+  },
+  "/works/finflow": {
+    "version": 1,
+    "title": "Noor Azaan",
+    "description": "Artemis is a premium Framer template for designers and creatives. Showcase your projects, process, and personality with a clean, customizable portfolio that stands out on any device.",
+    "keywords": "",
+    "h1": [
+      "Noor Azaan"
+    ],
+    "h2": [
+      "Let's connect further?"
+    ],
+    "h3": [],
+    "h4": [],
+    "h5": [
+      "Client: Noor Azaan (Download)Industry: Consumer Mobile, FaithTechTimeline: 0 → 1 Product Development (2026)My Role: Founder, Product Manager & Product Designer",
+      "← Back to All Works"
+    ],
+    "h6": [],
+    "p": [
+      "Pragya's",
+      "portfolio",
+      "A modern lifestyle app for Gen Z Muslims. Currently live on the App Store!",
+      "Ios App 0 → 1",
+      "After seeing friends interact with multiple Islamic apps, I noticed the same complaints kept coming up: the apps felt dated, cluttered, and weren't designed with younger users in mind.",
+      "Most solved the functional problem of prayer times and Quran access, but not the experience of using them every day, especially for 20-something year old women. I experimented with building a modern, design-first app that fit naturally into people's daily routines.",
+      "I led the product from concept to App Store launch - conducting user interviews, defining the MVP, designing the UI/UX, prioritizing features based on feedback, and integrating live APIs for prayer times, Quran, audio recitations, and Qibla.",
+      "Email",
+      "pragyasilwal@gmail.com",
+      "LinkedIn",
+      "linkedin.com/psilwal",
+      "Website",
+      "pragyasilwal.com",
+      "2026",
+      "Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    ],
+    "codeblock": [],
+    "url": "/works/finflow"
+  },
+  "/works/rmsa": {
+    "version": 1,
+    "title": "RateMySemesterAbroad",
+    "description": "Artemis is a premium Framer template for designers and creatives. Showcase your projects, process, and personality with a clean, customizable portfolio that stands out on any device.",
+    "keywords": "",
+    "h1": [
+      "RateMySemesterAbroad"
+    ],
+    "h2": [
+      "Let's connect further?"
+    ],
+    "h3": [],
+    "h4": [],
+    "h5": [
+      "Client: Rate My Semester Abroad (Read More)Industry: EdTech, TravelTimeline: 0 → 1 Product Development (2025)My Role: Founder & Product Manager",
+      "← Back to All Works",
+      "CardFit →"
+    ],
+    "h6": [],
+    "p": [
+      "Pragya's",
+      "portfolio",
+      "Built a platform that helps students compare study abroad programs through verified reviews and first-hand experiences, securing $10K in venture funding and recognition through regional entrepreneurship competitions",
+      "Visual Design",
+      "While planning to study abroad, I found that most university resources focused on logistics rather than the student experience. Information about academics, housing, cost of living, and campus culture was scattered across forums and social media, making it difficult to compare programs.",
+      "I designed Rate My Semester Abroad as a centralized review platform where students can make informed decisions through authentic, structured insights from past participants. The project received $10,000 in venture funding and placed 2nd at the TriCo ProtoThon hosted by Girls Who Code which led to my selection as a Haverford Entrepreneurship Fellow.",
+      "Email",
+      "pragyasilwal@gmail.com",
+      "LinkedIn",
+      "linkedin.com/psilwal",
+      "Website",
+      "pragyasilwal.com",
+      "2026",
+      "Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    ],
+    "codeblock": [],
+    "url": "/works/rmsa"
+  },
+  "/playground": {
+    "version": 1,
+    "title": "Artemis – Modern Designer Portfolio Template for Framer | Neueframe",
+    "description": "Artemis is a premium Framer template for designers and creatives. Showcase your projects, process, and personality with a clean, customizable portfolio that stands out on any device.",
+    "keywords": "",
+    "h1": [
+      "About.."
+    ],
+    "h2": [
+      "Let's connect further?"
+    ],
+    "h3": [],
+    "h4": [
+      "Love what you see?"
+    ],
+    "h5": [],
+    "h6": [],
+    "p": [
+      "Pragya's",
+      "portfolio",
+      "Born and raised in Kathmandu, Nepal, I moved to the U.S. for college in 2023. My academic background sits at the intersection of data and technology in a liberal arts setting, and I feel most guided most by people & their stories.",
+      "Before college, I took a gap year to figure out what I wanted to build my career around. At 17, I worked full-time at an NGO on a storytelling project that took me across Nepal, where I met people from vastly different communities and listened to their experiences. Those conversations became one of the most formative parts of my life. They were also where I discovered what I cared about most: listening to people's stories, understanding their lived experiences, and finding ways to create something that genuinely adds value to their lives.",
+      "Right before heading to college, Published a magazine, one of my very prized possessions. Still have some physical copies with me - happy to share :)",
+      "Started a major in Economics, and spent my freshman summer working in strategy consulting, followed by a semester in Economic consulting",
+      "Then participated in a summer incubator",
+      "That summer became one of my most formative experiences,and I grew more technical skills over the next year - helping form better products.",
+      "Let's connect!",
+      "Email",
+      "pragyasilwal@gmail.com",
+      "LinkedIn",
+      "linkedin.com/psilwal",
+      "Website",
+      "pragyasilwal.com",
+      "2026",
+      "Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    ],
+    "codeblock": [],
+    "url": "/playground"
+  },
+  "/works": {
+    "version": 1,
+    "title": "Artemis – Modern Designer Portfolio Template for Framer | Neueframe",
+    "description": "Artemis is a premium Framer template for designers and creatives. Showcase your projects, process, and personality with a clean, customizable portfolio that stands out on any device.",
+    "keywords": "",
+    "h1": [
+      "Works"
+    ],
+    "h2": [
+      "Let's connect further?"
+    ],
+    "h3": [],
+    "h4": [],
+    "h5": [
+      "RateMySemesterAbroad",
+      "CardFit",
+      "Noor Azaan"
+    ],
+    "h6": [],
+    "p": [
+      "Pragya's",
+      "portfolio",
+      "From concept to launch — projects that helped startups grow, scale, and succeed.",
+      "Built a platform that helps students compare study abroad programs through verified reviews and first-hand experiences, securing $10K in venture funding and recognition through regional entrepreneurship competitions",
+      "Visual Design",
+      "Credit card discovery platform that uses live card data and a personalized ranking engine to help users find the right card",
+      "Web",
+      "A modern lifestyle app for Gen Z Muslims. Currently live on the App Store!",
+      "Ios App 0 → 1",
+      "Email",
+      "pragyasilwal@gmail.com",
+      "LinkedIn",
+      "linkedin.com/psilwal",
+      "Website",
+      "pragyasilwal.com",
+      "2026",
+      "Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    ],
+    "codeblock": [],
+    "url": "/works"
+  },
+  "/": {
+    "version": 1,
+    "title": "Artemis – Modern Designer Portfolio Template for Framer | Neueframe",
+    "description": "Artemis is a premium Framer template for designers and creatives. Showcase your projects, process, and personality with a clean, customizable portfolio that stands out on any device.",
+    "keywords": "",
+    "h1": [
+      "Hi, Is it me that you're looking for?"
+    ],
+    "h2": [
+      "I'm Pragya and this is a sneak peak of my work!",
+      "Product Spotlight",
+      "Let's connect further?"
+    ],
+    "h3": [],
+    "h4": [],
+    "h5": [
+      "RateMySemesterAbroad",
+      "CardFit",
+      "Noor Azaan"
+    ],
+    "h6": [],
+    "p": [
+      "Pragya's",
+      "portfolio",
+      "Built a platform that helps students compare study abroad programs through verified reviews and first-hand experiences, securing $10K in venture funding and recognition through regional entrepreneurship competitions",
+      "Visual Design",
+      "Credit card discovery platform that uses live card data and a personalized ranking engine to help users find the right card",
+      "Web",
+      "A modern lifestyle app for Gen Z Muslims. Currently live on the App Store!",
+      "Ios App 0 → 1",
+      "Email",
+      "pragyasilwal@gmail.com",
+      "LinkedIn",
+      "linkedin.com/psilwal",
+      "Website",
+      "pragyasilwal.com",
+      "2026",
+      "Create a free website with Framer, the website builder loved by startups, designers and agencies."
+    ],
+    "codeblock": [],
+    "url": "/"
+  }
+}

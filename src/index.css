@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme {
+  --font-hand: "Patrick Hand", cursive;
+  --font-retro: "Space Mono", monospace;
+  --color-ink: #2c2a26;
+  --color-paper: #fdfaf6;
+  --color-paper2: #e9e3d5;
+  --color-pink: #ea7684;
+}
+
+body {
+  background: linear-gradient(to bottom, #788439 0%, #788439 58%, #2c2a26 58%, #2c2a26 58.6%, #f8dad4 58.6%, #f8dad4 100%);
+  color: var(--color-ink);
+  font-family: var(--font-hand);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+@media (min-width: 640px) {
+  body {
+    background: linear-gradient(to bottom, #788439 0%, #788439 63%, #2c2a26 63%, #2c2a26 63.6%, #f8dad4 63.6%, #f8dad4 100%);
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    background: linear-gradient(to bottom, #788439 0%, #788439 68%, #2c2a26 68%, #2c2a26 68.6%, #f8dad4 68.6%, #f8dad4 100%);
+  }
+}
+
+.font-hand {
+  font-family: var(--font-hand);
+}
+
+.font-retro {
+  font-family: var(--font-retro);
+}
+
+.sketch-box {
+  background-color: white;
+  border: 3px solid var(--color-ink);
+  border-radius: 2% 98% 3% 97% / 97% 4% 96% 3%;
+  box-shadow: 4px 5px 0px rgba(44, 42, 38, 0.15);
+  transition: border-radius 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sketch-box:hover {
+  border-radius: 98% 2% 97% 3% / 4% 96% 3% 97%;
+}
+
+.sketch-box-interactive:hover {
+  box-shadow: 6px 7px 0px rgba(44, 42, 38, 0.15);
+}
+
+.sketch-box-interactive:active {
+  transform: translateY(1px);
+  box-shadow: 2px 3px 0px rgba(44, 42, 38, 0.15);
+}
+
+/* SVG Landing Specifics */
+.hole circle { 
+  stroke: var(--color-ink); 
+  stroke-width: 3.5; 
+  transition: all 0.15s ease; 
+}
+.hole:hover circle, .hole:focus circle { 
+  fill: rgba(255, 255, 255, 0.4); 
+  stroke-width: 4.5; 
+}
+.hole:focus { outline: none; }
+.hole:active circle { transform: scale(0.92); fill: rgba(255, 255, 255, 0.6); }
+
+/* Custom scrollbar for popups */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(44, 42, 38, 0.2);
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(44, 42, 38, 0.4);
+}

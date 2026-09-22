@@ -1,0 +1,6 @@
+{
+  "name": "You've reached Pragya",
+  "description": "An interactive, nostalgic rotary phone portfolio.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
