@@ -209,24 +209,30 @@ export const LandingScene = forwardRef<LandingSceneRef, LandingSceneProps>(({ on
     { id: '0', num: '0', action: '0', label: 'END' },
   ];
 
+  const pointerDownMeta = useRef<{ startX: number; startY: number; startTime: number }>({ startX: 0, startY: 0, startTime: 0 });
+
   useImperativeHandle(ref, () => ({
     simulateDial: async (num: string) => {
       if (isDragging || isWobbling) return;
       const holeIndex = holesData.findIndex(h => h.num === num);
       if (holeIndex === -1) return;
       
+      initAudio();
       const maxRot = 40 - (-35 - (holeIndex * 26));
-      await animate(rotation, maxRot, { duration: maxRot * 0.0035, ease: "easeIn" });
-      await new Promise(r => setTimeout(r, 150));
-      await animate(rotation, 0, { type: "spring", stiffness: 80, damping: 15 });
+      await animate(rotation, maxRot, { duration: Math.max(0.2, maxRot * 0.0035), ease: "easeIn" });
+      await new Promise(r => setTimeout(r, 120));
+      await animate(rotation, 0, { type: "spring", stiffness: 85, damping: 14 });
       onDial(num);
     }
   }));
 
   const handlePointerDown = (e: PointerEvent<SVGGElement>, index: number, action: string) => {
     if (!svgRef.current || isWobbling) return;
+    initAudio();
     e.currentTarget.setPointerCapture(e.pointerId);
     
+    pointerDownMeta.current = { startX: e.clientX, startY: e.clientY, startTime: Date.now() };
+
     const rect = svgRef.current.getBoundingClientRect();
     const dialCx = rect.left + rect.width * (440 / 800);
     const dialCy = rect.top + rect.height * (580 / 900);
@@ -253,20 +259,32 @@ export const LandingScene = forwardRef<LandingSceneRef, LandingSceneProps>(({ on
   const handlePointerUp = async (e: PointerEvent<SVGGElement>) => {
     if (!isDragging) return;
     setIsDragging(false);
-    e.currentTarget.releasePointerCapture(e.pointerId);
+    try {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    } catch {}
     
     const { maxRotation, action } = activeDragInfo.current;
     const currentRot = rotation.get();
-    
-    if (currentRot > maxRotation * 0.85) {
-      await animate(rotation, 0, { type: "spring", stiffness: 80, damping: 15, mass: 1 });
-      
-      // Trigger ring ONLY if it hasn't been poked yet
-      if (!hasBeenPoked) {
-        triggerRing();
-      } else {
-        onDial(action);
+    const dist = Math.hypot(e.clientX - pointerDownMeta.current.startX, e.clientY - pointerDownMeta.current.startY);
+    const duration = Date.now() - pointerDownMeta.current.startTime;
+
+    // Check if it was a quick click/tap instead of a drag
+    if (dist < 15 && duration < 400 && currentRot < 20) {
+      animate(rotation, 0, { duration: 0.1 });
+      const holeIndex = holesData.findIndex(h => h.action === action);
+      if (holeIndex !== -1) {
+        const targetRot = 40 - (-35 - (holeIndex * 26));
+        await animate(rotation, targetRot, { duration: targetRot * 0.0035, ease: "easeIn" });
+        await new Promise(r => setTimeout(r, 100));
+        await animate(rotation, 0, { type: "spring", stiffness: 85, damping: 14 });
       }
+      onDial(action);
+      return;
+    }
+    
+    if (currentRot > maxRotation * 0.75) {
+      await animate(rotation, 0, { type: "spring", stiffness: 80, damping: 15, mass: 1 });
+      onDial(action);
     } else {
       animate(rotation, 0, { type: "spring", stiffness: 150, damping: 15 });
     }
@@ -276,17 +294,12 @@ export const LandingScene = forwardRef<LandingSceneRef, LandingSceneProps>(({ on
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
       if (isDragging) return;
+      initAudio();
       const maxRotation = 40 - (-35 - (index * 26));
       await animate(rotation, maxRotation, { duration: maxRotation * 0.0035, ease: "easeIn" });
-      await new Promise(r => setTimeout(r, 150));
+      await new Promise(r => setTimeout(r, 120));
       await animate(rotation, 0, { type: "spring", stiffness: 80, damping: 15 });
-      
-      // Trigger ring ONLY if it hasn't been poked yet
-      if (!hasBeenPoked) {
-        triggerRing();
-      } else {
-        onDial(action);
-      }
+      onDial(action);
     }
   };
 

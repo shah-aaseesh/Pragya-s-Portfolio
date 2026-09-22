@@ -65,16 +65,25 @@ export default function App() {
   const [activePopup, setActivePopup] = useState<PopupState>('NONE');
   const [isHungUp, setIsHungUp] = useState(false);
   const [showText, setShowText] = useState(false);
-  
   const [typeIndex, setTypeIndex] = useState(0);
   
   const part1 = "Hi, you've reached Pragya. I'm away right now, but feel free to stick around. ";
   const part2 = "Ring 1";
-  const part3 = " to look at my work and ";
+  const part3 = " to look at my work, ";
   const part4 = "Ring 2";
-  const part5 = " to leave me a message";
+  const part5 = " to leave me a message, or ";
+  const part6 = "Ring 3";
+  const part7 = " for experience.";
   
-  const fullTextLength = part1.length + part2.length + part3.length + part4.length + part5.length;
+  const fullTextLength = part1.length + part2.length + part3.length + part4.length + part5.length + part6.length + part7.length;
+
+  // Auto-start typewriter prompt shortly after load
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowText(true);
+    }, 400);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleTextStart = () => {
     setShowText(true);
@@ -86,12 +95,11 @@ export default function App() {
       return;
     }
     
-    // Only display popup if text has fully been displayed
-    if (showText && typeIndex === fullTextLength) {
-      if (num === '1') setActivePopup('PROJECTS');
-      if (num === '2') setActivePopup('CONTACT');
-      if (num === '3') setActivePopup('EXPERIENCE');
-    }
+    // Instant popup activation without blocking
+    if (num === '1') setActivePopup('PROJECTS');
+    else if (num === '2') setActivePopup('CONTACT');
+    else if (num === '3') setActivePopup('EXPERIENCE');
+    else if (num === '4' || num === '5') setActivePopup('WHO');
   };
 
   const handleHangUp = () => {
@@ -102,14 +110,9 @@ export default function App() {
 
   const resetExperience = () => {
     setIsHungUp(false);
-    setShowText(false);
+    setShowText(true);
+    setTypeIndex(fullTextLength);
     setActivePopup('NONE');
-    // Start text again? Or just wait?
-    // Let's just show text immediately after picking up again so they don't have to wait.
-    setTimeout(() => {
-      setShowText(true);
-      setTypeIndex(fullTextLength); // Instant text
-    }, 500);
   };
 
   useEffect(() => {
@@ -118,7 +121,7 @@ export default function App() {
       timeout = setTimeout(() => {
         playTypewriterClick();
         setTypeIndex(prev => prev + 1);
-      }, 40);
+      }, 35);
     }
     return () => clearTimeout(timeout);
   }, [showText, typeIndex, fullTextLength]);
@@ -133,6 +136,7 @@ export default function App() {
         "1": "1",
         "2": "2",
         "3": "3",
+        "4": "4",
         "5": "5",
         "0": "0"
       };
@@ -143,7 +147,7 @@ export default function App() {
     
     window.addEventListener('keydown', handleGlobalKeyDown);
     return () => window.removeEventListener('keydown', handleGlobalKeyDown);
-  }, [showText, typeIndex, activePopup]);
+  }, [activePopup]);
 
   const renderText = () => {
     let remaining = typeIndex;
@@ -158,14 +162,18 @@ export default function App() {
     const p3 = getChunk(part3);
     const p4 = getChunk(part4);
     const p5 = getChunk(part5);
+    const p6 = getChunk(part6);
+    const p7 = getChunk(part7);
 
     return (
       <>
         {p1}
         {p2 && (
           <span 
-            className="text-red-500 underline underline-offset-4 cursor-pointer hover:text-red-700 transition-colors"
-            onClick={() => landingSceneRef.current?.simulateDial('1')}
+            className="text-red-600 font-bold underline underline-offset-4 cursor-pointer hover:text-red-800 transition-colors"
+            onClick={() => {
+              landingSceneRef.current?.simulateDial('1');
+            }}
           >
             {p2}
           </span>
@@ -173,13 +181,26 @@ export default function App() {
         {p3}
         {p4 && (
           <span 
-            className="text-red-500 underline underline-offset-4 cursor-pointer hover:text-red-700 transition-colors"
-            onClick={() => landingSceneRef.current?.simulateDial('2')}
+            className="text-red-600 font-bold underline underline-offset-4 cursor-pointer hover:text-red-800 transition-colors"
+            onClick={() => {
+              landingSceneRef.current?.simulateDial('2');
+            }}
           >
             {p4}
           </span>
         )}
         {p5}
+        {p6 && (
+          <span 
+            className="text-red-600 font-bold underline underline-offset-4 cursor-pointer hover:text-red-800 transition-colors"
+            onClick={() => {
+              landingSceneRef.current?.simulateDial('3');
+            }}
+          >
+            {p6}
+          </span>
+        )}
+        {p7}
       </>
     );
   };
@@ -187,6 +208,37 @@ export default function App() {
   return (
     <div className="min-h-screen w-full flex flex-col items-center justify-center p-2 sm:p-4 relative overflow-hidden">
       
+      {/* Quick Access Top Bar */}
+      <header className="fixed top-2 sm:top-4 z-30 flex flex-wrap items-center justify-center gap-1.5 sm:gap-3 bg-[#fdfaf6]/95 border-2 border-ink py-1.5 px-3 sm:py-2 sm:px-4 rounded-full shadow-md backdrop-blur-sm">
+        <span className="font-retro text-[10px] sm:text-xs font-bold text-ink/70 hidden md:inline mr-1">
+          DIAL MENU:
+        </span>
+        <button 
+          onClick={() => landingSceneRef.current?.simulateDial('1')}
+          className="font-retro text-xs sm:text-sm font-bold px-2 sm:px-3 py-1 rounded-full border border-ink/40 bg-white hover:bg-ink hover:text-paper transition-all cursor-pointer shadow-xs active:scale-95"
+        >
+          <span className="text-red-500 mr-1">[1]</span> Projects
+        </button>
+        <button 
+          onClick={() => landingSceneRef.current?.simulateDial('2')}
+          className="font-retro text-xs sm:text-sm font-bold px-2 sm:px-3 py-1 rounded-full border border-ink/40 bg-white hover:bg-ink hover:text-paper transition-all cursor-pointer shadow-xs active:scale-95"
+        >
+          <span className="text-red-500 mr-1">[2]</span> Contact
+        </button>
+        <button 
+          onClick={() => landingSceneRef.current?.simulateDial('3')}
+          className="font-retro text-xs sm:text-sm font-bold px-2 sm:px-3 py-1 rounded-full border border-ink/40 bg-white hover:bg-ink hover:text-paper transition-all cursor-pointer shadow-xs active:scale-95"
+        >
+          <span className="text-red-500 mr-1">[3]</span> Experience
+        </button>
+        <button 
+          onClick={() => landingSceneRef.current?.simulateDial('0')}
+          className="font-retro text-xs sm:text-sm font-bold px-2 sm:px-3 py-1 rounded-full border border-ink/40 bg-white hover:bg-ink hover:text-paper transition-all cursor-pointer shadow-xs active:scale-95"
+        >
+          <span className="text-ink/60 mr-1">[0]</span> Hang Up
+        </button>
+      </header>
+
       {/* Background overlay for hangup state */}
       <AnimatePresence>
         {isHungUp && (
@@ -194,34 +246,39 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-ink/90 z-40 flex flex-col items-center justify-center text-paper font-hand text-2xl sm:text-4xl gap-6 sm:gap-8 p-4"
+            className="fixed inset-0 bg-ink/95 z-40 flex flex-col items-center justify-center text-paper font-hand text-2xl sm:text-4xl gap-6 sm:gap-8 p-4"
           >
-            <div className="text-center">
-              <p>— CLICK —</p>
+            <div className="text-center font-retro text-lg sm:text-2xl text-paper/80">
+              <p>— CLICK / CALL ENDED —</p>
             </div>
-            <div className="text-center mt-6 sm:mt-12 leading-relaxed">
-              <p>Thanks for calling.</p>
-              <p>Talk soon. ♡</p>
+            <div className="text-center mt-4 sm:mt-8 leading-relaxed">
+              <p className="text-3xl sm:text-5xl font-bold mb-2">Thanks for calling.</p>
+              <p className="text-xl sm:text-3xl text-pink-300">Talk soon. ♡</p>
             </div>
             <button 
               onClick={resetExperience}
-              className="mt-8 sm:mt-12 px-6 py-2 border-2 border-paper rounded-full text-lg sm:text-xl hover:bg-paper hover:text-ink transition-colors cursor-pointer"
+              className="mt-6 sm:mt-10 px-8 py-3 border-2 border-paper rounded-full text-lg sm:text-2xl hover:bg-paper hover:text-ink transition-all cursor-pointer shadow-lg active:scale-95 font-bold font-retro"
             >
-              Pick up again
+              📞 Pick up phone again
             </button>
           </motion.div>
         )}
       </AnimatePresence>
 
-      <div className="w-full max-w-[1100px] flex items-center justify-center relative z-10">
+      <div className="w-full max-w-[1100px] flex items-center justify-center relative z-10 pt-10 sm:pt-6">
         <LandingScene ref={landingSceneRef} onDial={handleDial} onTextStart={handleTextStart} />
       </div>
 
       {showText && (
-        <div className="fixed bottom-3 sm:bottom-8 left-3 right-3 sm:left-auto sm:right-8 z-20 font-retro text-ink text-center sm:text-right max-w-none sm:max-w-[420px] md:max-w-[500px] pointer-events-none">
-          <p className="text-xs sm:text-base md:text-xl font-bold leading-snug sm:leading-relaxed pointer-events-auto bg-[#fdfaf6]/92 sm:bg-transparent px-3 py-2 sm:p-0 rounded-lg sm:rounded-none shadow-sm sm:shadow-none border border-ink/20 sm:border-none backdrop-blur-xs sm:backdrop-blur-none inline-block">
-            {renderText()}
-          </p>
+        <div className="fixed bottom-3 sm:bottom-6 left-3 right-3 sm:left-auto sm:right-6 z-20 font-retro text-ink text-center sm:text-right max-w-none sm:max-w-[440px] md:max-w-[520px] pointer-events-none">
+          <div className="pointer-events-auto bg-[#fdfaf6]/95 p-3 sm:p-4 rounded-xl shadow-lg border-2 border-ink backdrop-blur-xs inline-block text-left sm:text-right">
+            <p className="text-xs sm:text-sm md:text-base font-bold leading-snug sm:leading-relaxed">
+              {renderText()}
+            </p>
+            <div className="mt-2 pt-1 border-t border-ink/15 text-[10px] sm:text-xs text-ink/60 font-medium">
+              💡 Tip: Click any number on the rotary dial or press keys [1], [2], [3], [0]
+            </div>
+          </div>
         </div>
       )}
 
